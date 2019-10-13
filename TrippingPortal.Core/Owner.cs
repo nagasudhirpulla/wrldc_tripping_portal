@@ -3,6 +3,7 @@
 namespace TrippingPortal.Core
 {
     /**
+     * Owner means Grid Element Owner
      * Name is unique
      * **/
     public class Owner

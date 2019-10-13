@@ -2,6 +2,10 @@
 
 namespace TrippingPortal.Core
 {
+    /**
+     * An event log (EL) file for a tripping
+     * A tripping can have multiple event logs
+     * **/
     public class TrippingEL
     {
         public int TrippingELId { get; set; }

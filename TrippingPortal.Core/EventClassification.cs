@@ -3,6 +3,7 @@
 namespace TrippingPortal.Core
 {
     /**
+     * Each event will have a single classification
      * Name is unique
      * **/
     public class EventClassification

@@ -4,6 +4,7 @@ using System.ComponentModel.DataAnnotations;
 namespace TrippingPortal.Core
 {
     /**
+     * Tripping means an event of an Element tripping
      * Tripping Element Owners, Bay Owners todo
      * **/
     public class Tripping

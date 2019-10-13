@@ -3,8 +3,8 @@
 namespace TrippingPortal.Core
 {
     /**
-     * Todo associate utility to application user
-     * Name is unique
+     * An application user
+     * Utility means a constituent
      * **/
     public class Utility : IdentityUser
     {
