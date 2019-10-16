@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace TrippingPortal.Core
@@ -33,7 +34,6 @@ namespace TrippingPortal.Core
         public string PcmDiscussionReportFilePath { get; set; }
         public DateTime UtilityFinalReportUploadTime { get; set; }
 
-        public Utility FinalReportUploadUtility { get; set; }
-        public int FinalReportUploadUtilityId { get; set; }
+        public List<Utility> ReportUploadUtilities { get; set; }
     }
 }

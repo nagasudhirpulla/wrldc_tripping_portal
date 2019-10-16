@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace TrippingPortal.Core
@@ -19,6 +20,10 @@ namespace TrippingPortal.Core
         public string ElementName { get; set; }
         [Required]
         public string ElementType { get; set; }
+
+        public List<Owner> ElementOwners { get; set; }
+        public List<Owner> BayOwners { get; set; }
+        public List<Utility> ReportUploadUtilities { get; set; }
 
         [Required]
         public DateTime OutageTime { get; set; }

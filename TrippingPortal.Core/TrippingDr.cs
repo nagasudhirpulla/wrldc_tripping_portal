@@ -11,6 +11,10 @@ namespace TrippingPortal.Core
     public class TrippingDr
     {
         public int TrippingDrId { get; set; }
+
+        public Tripping Tripping { get; set; }
+        public int TrippingId { get; set; }
+
         public string Filename { get; set; }
 
         public Utility UploadUtility { get; set; }
