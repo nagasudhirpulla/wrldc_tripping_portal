@@ -8,18 +8,22 @@ namespace TrippingPortal.Core
      * In case of line, we have End1, End2 DRs
      * In case of ICT, we have HV, LV DRs
      * **/
-    public class TrippingDr
+    public class TrippingDR
     {
-        public int TrippingDrId { get; set; }
+        public int TrippingDRId { get; set; }
 
         public Tripping Tripping { get; set; }
         public int TrippingId { get; set; }
 
+        public bool IsOtherEndOrLV { get; set; }
         public string Filename { get; set; }
 
         public Utility UploadUtility { get; set; }
         public int UploadUtilityId { get; set; }
 
         public DateTime FileUploadTime { get; set; }
+
+        public DateTime CreatedAt { get; set; }
+        public DateTime UpdatedAt { get; set; }
     }
 }

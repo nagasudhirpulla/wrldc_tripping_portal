@@ -1,6 +1,6 @@
 using System;
 
-namespace TrippingPortalWebApp.Models
+namespace TrippingPortal.WebApp.Models
 {
     public class ErrorViewModel
     {

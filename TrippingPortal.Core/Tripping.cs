@@ -24,6 +24,7 @@ namespace TrippingPortal.Core
         public List<Owner> ElementOwners { get; set; }
         public List<Owner> BayOwners { get; set; }
         public List<Utility> ReportUploadUtilities { get; set; }
+        public List<Utility> OtherEndReportUploadUtilities { get; set; }
 
         [Required]
         public DateTime OutageTime { get; set; }

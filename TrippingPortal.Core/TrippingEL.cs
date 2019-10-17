@@ -19,5 +19,8 @@ namespace TrippingPortal.Core
         public int UploadUtilityId { get; set; }
 
         public DateTime FileUploadTime { get; set; }
+
+        public DateTime CreatedAt { get; set; }
+        public DateTime UpdatedAt { get; set; }
     }
 }
