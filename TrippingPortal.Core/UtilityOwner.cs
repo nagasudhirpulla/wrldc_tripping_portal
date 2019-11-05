@@ -7,7 +7,7 @@
     {
         public int UtilityOwnerId { get; set; }
         public Utility Utility { get; set; }
-        public int UtilityId { get; set; }
+        public string UtilityId { get; set; }
         public Owner Owner { get; set; }
         public int OwnerId { get; set; }
     }

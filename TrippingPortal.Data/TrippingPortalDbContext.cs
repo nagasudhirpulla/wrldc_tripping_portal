@@ -25,6 +25,8 @@ namespace TrippingPortal.Data
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
+            base.OnModelCreating(builder);
+
             // Owner name is unique
             builder.Entity<Owner>()
             .HasIndex(o => o.Name)

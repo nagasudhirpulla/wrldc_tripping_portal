@@ -16,7 +16,7 @@ namespace TrippingPortal.Core
         public string Filename { get; set; }
 
         public Utility UploadUtility { get; set; }
-        public int UploadUtilityId { get; set; }
+        public string UploadUtilityId { get; set; }
 
         public DateTime FileUploadTime { get; set; }
 

@@ -8,6 +8,5 @@ namespace TrippingPortal.Core
      * **/
     public class Utility : IdentityUser
     {
-
     }
 }

@@ -38,9 +38,10 @@ namespace TrippingPortal.WebApp
 
             services.AddDbContext<TrippingPortalDbContext>(options =>
                 options.UseNpgsql(
-                    Configuration.GetConnectionString("DefaultConnection"), b => b.MigrationsAssembly("TrippingPortalWebApp")));
+                    Configuration.GetConnectionString("DefaultConnection"), b => b.MigrationsAssembly("TrippingPortal.WebApp")));
             services.AddDefaultIdentity<Utility>(options => options.SignIn.RequireConfirmedAccount = true)
                 .AddEntityFrameworkStores<TrippingPortalDbContext>();
+
             services.AddControllersWithViews();
             services.AddRazorPages();
         }

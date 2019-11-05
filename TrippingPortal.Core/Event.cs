@@ -17,7 +17,7 @@ namespace TrippingPortal.Core
      * **/
     public class Event
     {
-        public int TrippingEventId { get; set; }
+        public int EventId { get; set; }
 
         [Required]
         public string Name { get; set; }
