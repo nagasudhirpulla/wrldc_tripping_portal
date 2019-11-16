@@ -1,12 +1,13 @@
 ﻿using Microsoft.AspNetCore.Identity;
+using TrippingPortal.Core.Interfaces;
 
-namespace TrippingPortal.Core
+namespace TrippingPortal.Core.Entities
 {
     /**
      * An application user
      * Utility means a constituent
      * **/
-    public class Utility : IdentityUser
+    public class Utility : IdentityUser, IAggregateRoot
     {
     }
 }

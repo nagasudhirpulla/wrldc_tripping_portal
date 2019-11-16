@@ -26,13 +26,13 @@ namespace TrippingPortal.WebApp.Migrations
                 name: "EventClassifications",
                 columns: table => new
                 {
-                    EventClassificationId = table.Column<int>(nullable: false)
+                    Id = table.Column<int>(nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
                     Name = table.Column<string>(nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_EventClassifications", x => x.EventClassificationId);
+                    table.PrimaryKey("PK_EventClassifications", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -60,7 +60,7 @@ namespace TrippingPortal.WebApp.Migrations
                 name: "Events",
                 columns: table => new
                 {
-                    EventId = table.Column<int>(nullable: false)
+                    Id = table.Column<int>(nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
                     Name = table.Column<string>(nullable: false),
                     EventStartTime = table.Column<DateTime>(nullable: false),
@@ -74,12 +74,12 @@ namespace TrippingPortal.WebApp.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Events", x => x.EventId);
+                    table.PrimaryKey("PK_Events", x => x.Id);
                     table.ForeignKey(
                         name: "FK_Events_EventClassifications_EventClassificationId",
                         column: x => x.EventClassificationId,
                         principalTable: "EventClassifications",
-                        principalColumn: "EventClassificationId",
+                        principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
 
@@ -87,7 +87,7 @@ namespace TrippingPortal.WebApp.Migrations
                 name: "Trippings",
                 columns: table => new
                 {
-                    TrippingId = table.Column<int>(nullable: false)
+                    Id = table.Column<int>(nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
                     EventId = table.Column<int>(nullable: false),
                     ForeignId = table.Column<int>(nullable: false),
@@ -101,12 +101,12 @@ namespace TrippingPortal.WebApp.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Trippings", x => x.TrippingId);
+                    table.PrimaryKey("PK_Trippings", x => x.Id);
                     table.ForeignKey(
                         name: "FK_Trippings_Events_EventId",
                         column: x => x.EventId,
                         principalTable: "Events",
-                        principalColumn: "EventId",
+                        principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
 
@@ -141,19 +141,19 @@ namespace TrippingPortal.WebApp.Migrations
                         name: "FK_AspNetUsers_Events_EventId",
                         column: x => x.EventId,
                         principalTable: "Events",
-                        principalColumn: "EventId",
+                        principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
                         name: "FK_AspNetUsers_Trippings_TrippingId",
                         column: x => x.TrippingId,
                         principalTable: "Trippings",
-                        principalColumn: "TrippingId",
+                        principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
                         name: "FK_AspNetUsers_Trippings_TrippingId1",
                         column: x => x.TrippingId1,
                         principalTable: "Trippings",
-                        principalColumn: "TrippingId",
+                        principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                 });
 
@@ -161,7 +161,7 @@ namespace TrippingPortal.WebApp.Migrations
                 name: "Owners",
                 columns: table => new
                 {
-                    OwnerId = table.Column<int>(nullable: false)
+                    Id = table.Column<int>(nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
                     Name = table.Column<string>(nullable: false),
                     TrippingId = table.Column<int>(nullable: true),
@@ -169,18 +169,18 @@ namespace TrippingPortal.WebApp.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Owners", x => x.OwnerId);
+                    table.PrimaryKey("PK_Owners", x => x.Id);
                     table.ForeignKey(
                         name: "FK_Owners_Trippings_TrippingId",
                         column: x => x.TrippingId,
                         principalTable: "Trippings",
-                        principalColumn: "TrippingId",
+                        principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
                         name: "FK_Owners_Trippings_TrippingId1",
                         column: x => x.TrippingId1,
                         principalTable: "Trippings",
-                        principalColumn: "TrippingId",
+                        principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                 });
 
@@ -209,8 +209,8 @@ namespace TrippingPortal.WebApp.Migrations
                 name: "AspNetUserLogins",
                 columns: table => new
                 {
-                    LoginProvider = table.Column<string>(maxLength: 128, nullable: false),
-                    ProviderKey = table.Column<string>(maxLength: 128, nullable: false),
+                    LoginProvider = table.Column<string>(nullable: false),
+                    ProviderKey = table.Column<string>(nullable: false),
                     ProviderDisplayName = table.Column<string>(nullable: true),
                     UserId = table.Column<string>(nullable: false)
                 },
@@ -254,8 +254,8 @@ namespace TrippingPortal.WebApp.Migrations
                 columns: table => new
                 {
                     UserId = table.Column<string>(nullable: false),
-                    LoginProvider = table.Column<string>(maxLength: 128, nullable: false),
-                    Name = table.Column<string>(maxLength: 128, nullable: false),
+                    LoginProvider = table.Column<string>(nullable: false),
+                    Name = table.Column<string>(nullable: false),
                     Value = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
@@ -273,23 +273,23 @@ namespace TrippingPortal.WebApp.Migrations
                 name: "EventELs",
                 columns: table => new
                 {
-                    EventELId = table.Column<int>(nullable: false)
+                    Id = table.Column<int>(nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
                     EventId = table.Column<int>(nullable: false),
                     Filename = table.Column<string>(nullable: true),
                     UploadUtilityId = table.Column<string>(nullable: true),
                     UploadedById = table.Column<string>(nullable: true),
-                    CreatedAt = table.Column<DateTime>(nullable: false, defaultValue: new DateTime(2019, 11, 5, 15, 7, 14, 280, DateTimeKind.Local).AddTicks(2067)),
-                    UpdatedAt = table.Column<DateTime>(nullable: false, defaultValue: new DateTime(2019, 11, 5, 15, 7, 14, 282, DateTimeKind.Local).AddTicks(3567))
+                    CreatedAt = table.Column<DateTime>(nullable: false, defaultValue: new DateTime(2019, 11, 16, 23, 48, 1, 474, DateTimeKind.Local).AddTicks(2887)),
+                    UpdatedAt = table.Column<DateTime>(nullable: false, defaultValue: new DateTime(2019, 11, 16, 23, 48, 1, 477, DateTimeKind.Local).AddTicks(6774))
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_EventELs", x => x.EventELId);
+                    table.PrimaryKey("PK_EventELs", x => x.Id);
                     table.ForeignKey(
                         name: "FK_EventELs_Events_EventId",
                         column: x => x.EventId,
                         principalTable: "Events",
-                        principalColumn: "EventId",
+                        principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_EventELs_AspNetUsers_UploadUtilityId",
@@ -309,24 +309,24 @@ namespace TrippingPortal.WebApp.Migrations
                 name: "TrippingDRs",
                 columns: table => new
                 {
-                    TrippingDRId = table.Column<int>(nullable: false)
+                    Id = table.Column<int>(nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
                     TrippingId = table.Column<int>(nullable: false),
                     IsOtherEndOrLV = table.Column<bool>(nullable: false),
                     Filename = table.Column<string>(nullable: true),
                     UploadUtilityId = table.Column<string>(nullable: true),
                     FileUploadTime = table.Column<DateTime>(nullable: false),
-                    CreatedAt = table.Column<DateTime>(nullable: false, defaultValue: new DateTime(2019, 11, 5, 15, 7, 14, 283, DateTimeKind.Local).AddTicks(7001)),
-                    UpdatedAt = table.Column<DateTime>(nullable: false, defaultValue: new DateTime(2019, 11, 5, 15, 7, 14, 283, DateTimeKind.Local).AddTicks(7196))
+                    CreatedAt = table.Column<DateTime>(nullable: false, defaultValue: new DateTime(2019, 11, 16, 23, 48, 1, 482, DateTimeKind.Local).AddTicks(7443)),
+                    UpdatedAt = table.Column<DateTime>(nullable: false, defaultValue: new DateTime(2019, 11, 16, 23, 48, 1, 482, DateTimeKind.Local).AddTicks(7717))
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_TrippingDRs", x => x.TrippingDRId);
+                    table.PrimaryKey("PK_TrippingDRs", x => x.Id);
                     table.ForeignKey(
                         name: "FK_TrippingDRs_Trippings_TrippingId",
                         column: x => x.TrippingId,
                         principalTable: "Trippings",
-                        principalColumn: "TrippingId",
+                        principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_TrippingDRs_AspNetUsers_UploadUtilityId",
@@ -340,23 +340,23 @@ namespace TrippingPortal.WebApp.Migrations
                 name: "TrippingELs",
                 columns: table => new
                 {
-                    TrippingELId = table.Column<int>(nullable: false)
+                    Id = table.Column<int>(nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
                     TrippingId = table.Column<int>(nullable: false),
                     Filename = table.Column<string>(nullable: true),
                     UploadUtilityId = table.Column<string>(nullable: true),
                     FileUploadTime = table.Column<DateTime>(nullable: false),
-                    CreatedAt = table.Column<DateTime>(nullable: false, defaultValue: new DateTime(2019, 11, 5, 15, 7, 14, 283, DateTimeKind.Local).AddTicks(5905)),
-                    UpdatedAt = table.Column<DateTime>(nullable: false, defaultValue: new DateTime(2019, 11, 5, 15, 7, 14, 283, DateTimeKind.Local).AddTicks(6124))
+                    CreatedAt = table.Column<DateTime>(nullable: false, defaultValue: new DateTime(2019, 11, 16, 23, 48, 1, 483, DateTimeKind.Local).AddTicks(4003)),
+                    UpdatedAt = table.Column<DateTime>(nullable: false, defaultValue: new DateTime(2019, 11, 16, 23, 48, 1, 483, DateTimeKind.Local).AddTicks(4243))
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_TrippingELs", x => x.TrippingELId);
+                    table.PrimaryKey("PK_TrippingELs", x => x.Id);
                     table.ForeignKey(
                         name: "FK_TrippingELs_Trippings_TrippingId",
                         column: x => x.TrippingId,
                         principalTable: "Trippings",
-                        principalColumn: "TrippingId",
+                        principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_TrippingELs_AspNetUsers_UploadUtilityId",
@@ -372,7 +372,7 @@ namespace TrippingPortal.WebApp.Migrations
                 {
                     TrippingId = table.Column<int>(nullable: false),
                     OwnerId = table.Column<int>(nullable: false),
-                    TrippingBayOwnerId = table.Column<int>(nullable: false)
+                    Id = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -381,13 +381,13 @@ namespace TrippingPortal.WebApp.Migrations
                         name: "FK_TrippingBayOwners_Owners_OwnerId",
                         column: x => x.OwnerId,
                         principalTable: "Owners",
-                        principalColumn: "OwnerId",
+                        principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_TrippingBayOwners_Trippings_TrippingId",
                         column: x => x.TrippingId,
                         principalTable: "Trippings",
-                        principalColumn: "TrippingId",
+                        principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
 
@@ -397,7 +397,7 @@ namespace TrippingPortal.WebApp.Migrations
                 {
                     TrippingId = table.Column<int>(nullable: false),
                     OwnerId = table.Column<int>(nullable: false),
-                    TrippingElementOwnerId = table.Column<int>(nullable: false)
+                    Id = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -406,13 +406,13 @@ namespace TrippingPortal.WebApp.Migrations
                         name: "FK_TrippingElementOwners_Owners_OwnerId",
                         column: x => x.OwnerId,
                         principalTable: "Owners",
-                        principalColumn: "OwnerId",
+                        principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_TrippingElementOwners_Trippings_TrippingId",
                         column: x => x.TrippingId,
                         principalTable: "Trippings",
-                        principalColumn: "TrippingId",
+                        principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
 
@@ -422,7 +422,7 @@ namespace TrippingPortal.WebApp.Migrations
                 {
                     UtilityId = table.Column<string>(nullable: false),
                     OwnerId = table.Column<int>(nullable: false),
-                    UtilityOwnerId = table.Column<int>(nullable: false)
+                    Id = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -431,7 +431,7 @@ namespace TrippingPortal.WebApp.Migrations
                         name: "FK_UtilityOwners_Owners_OwnerId",
                         column: x => x.OwnerId,
                         principalTable: "Owners",
-                        principalColumn: "OwnerId",
+                        principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_UtilityOwners_AspNetUsers_UtilityId",

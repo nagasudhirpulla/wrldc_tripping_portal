@@ -1,17 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using TrippingPortal.Core.Interfaces;
 
-namespace TrippingPortal.Core
+namespace TrippingPortal.Core.Entities
 {
     /**
      * Tripping means an event of an Element tripping
      * Tripping Element Owners, Bay Owners todo
      * **/
-    public class Tripping
+    public class Tripping : BaseEntity, IAggregateRoot
     {
-        public int TrippingId { get; set; }
-
         public Event Event { get; set; }
         public int EventId { get; set; }
 

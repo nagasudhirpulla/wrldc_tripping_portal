@@ -12,8 +12,11 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using TrippingPortal.Data;
-using TrippingPortal.Core;
 using Microsoft.AspNetCore.Http;
+using TrippingPortal.Core.Entities;
+using Microsoft.AspNetCore.Identity.UI.Services;
+using TrippingPortal.Application;
+using TrippingPortal.Application.Security;
 
 namespace TrippingPortal.WebApp
 {
@@ -39,15 +42,28 @@ namespace TrippingPortal.WebApp
             services.AddDbContext<TrippingPortalDbContext>(options =>
                 options.UseNpgsql(
                     Configuration.GetConnectionString("DefaultConnection"), b => b.MigrationsAssembly("TrippingPortal.WebApp")));
-            services.AddDefaultIdentity<Utility>(options => options.SignIn.RequireConfirmedAccount = true)
-                .AddEntityFrameworkStores<TrippingPortalDbContext>();
+            services.AddIdentity<Utility, IdentityRole>(options =>
+            {
+                options.SignIn.RequireConfirmedAccount = false;
+                options.Password.RequireDigit = true;
+                options.Password.RequireLowercase = true;
+                options.Password.RequireNonAlphanumeric = true;
+                options.Password.RequireUppercase = false;
+                options.Password.RequiredLength = 4;
+                options.Password.RequiredUniqueChars = 2;
+            })
+                .AddEntityFrameworkStores<TrippingPortalDbContext>()
+                .AddDefaultTokenProviders();
+
+            // Add application services.
+            services.AddTransient<IEmailSender, EmailSender>();
 
             services.AddControllersWithViews();
             services.AddRazorPages();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, UserManager<Utility> userManager, RoleManager<IdentityRole> roleManager)
         {
             if (env.IsDevelopment())
             {
@@ -67,6 +83,15 @@ namespace TrippingPortal.WebApp
 
             app.UseAuthentication();
             app.UseAuthorization();
+
+            // seed Admin User and Admin, Guest Roles
+            AppIdentityInitializer identityInitializer = new AppIdentityInitializer()
+            {
+                UserManager = userManager,
+                RoleManager = roleManager,
+                Configuration = Configuration
+            };
+            identityInitializer.SeedData();
 
             app.UseEndpoints(endpoints =>
             {

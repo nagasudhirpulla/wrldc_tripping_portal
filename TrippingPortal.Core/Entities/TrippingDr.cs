@@ -1,6 +1,7 @@
 ﻿using System;
+using TrippingPortal.Core.Interfaces;
 
-namespace TrippingPortal.Core
+namespace TrippingPortal.Core.Entities
 {
     /**
      * Disturbance Recorder (DR) file for a tripping.
@@ -8,10 +9,8 @@ namespace TrippingPortal.Core
      * In case of line, we have End1, End2 DRs
      * In case of ICT, we have HV, LV DRs
      * **/
-    public class TrippingDR
+    public class TrippingDR : BaseEntity, IAggregateRoot
     {
-        public int TrippingDRId { get; set; }
-
         public Tripping Tripping { get; set; }
         public int TrippingId { get; set; }
 

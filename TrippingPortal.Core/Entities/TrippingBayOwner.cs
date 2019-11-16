@@ -1,9 +1,9 @@
-﻿namespace TrippingPortal.Core
-{
-    public class TrippingBayOwner
-    {
-        public int TrippingBayOwnerId { get; set; }
+﻿using TrippingPortal.Core.Interfaces;
 
+namespace TrippingPortal.Core.Entities
+{
+    public class TrippingBayOwner : BaseEntity, IAggregateRoot
+    {
         public Tripping Tripping { get; set; }
         public int TrippingId { get; set; }
 

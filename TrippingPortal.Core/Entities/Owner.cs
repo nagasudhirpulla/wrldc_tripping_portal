@@ -1,14 +1,14 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using TrippingPortal.Core.Interfaces;
 
-namespace TrippingPortal.Core
+namespace TrippingPortal.Core.Entities
 {
     /**
      * Owner means Grid Element Owner
      * Name is unique
      * **/
-    public class Owner
+    public class Owner : BaseEntity, IAggregateRoot
     {
-        public int OwnerId { get; set; }
         [Required]
         public string Name { get; set; }
     }

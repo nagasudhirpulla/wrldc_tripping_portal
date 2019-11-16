@@ -1,11 +1,12 @@
-﻿namespace TrippingPortal.Core
+﻿using TrippingPortal.Core.Interfaces;
+
+namespace TrippingPortal.Core.Entities
 {
     /**
      * Many-Many relation between Utility and Owner
      * **/
-    public class UtilityOwner
+    public class UtilityOwner : BaseEntity, IAggregateRoot
     {
-        public int UtilityOwnerId { get; set; }
         public Utility Utility { get; set; }
         public string UtilityId { get; set; }
         public Owner Owner { get; set; }

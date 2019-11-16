@@ -1,8 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using TrippingPortal.Core.Interfaces;
 
-namespace TrippingPortal.Core
+namespace TrippingPortal.Core.Entities
 {
     /**
      * A Grid Event. 
@@ -15,10 +16,8 @@ namespace TrippingPortal.Core
      * PCM discussion file - A single file to be uploaded by the RLDC.
      * Each event will have a set of multiple Event logs.
      * **/
-    public class Event
+    public class Event : BaseEntity, IAggregateRoot
     {
-        public int EventId { get; set; }
-
         [Required]
         public string Name { get; set; }
         [Required]

@@ -166,12 +166,10 @@ namespace TrippingPortal.WebApp.Migrations
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<string>", b =>
                 {
                     b.Property<string>("LoginProvider")
-                        .HasColumnType("character varying(128)")
-                        .HasMaxLength(128);
+                        .HasColumnType("text");
 
                     b.Property<string>("ProviderKey")
-                        .HasColumnType("character varying(128)")
-                        .HasMaxLength(128);
+                        .HasColumnType("text");
 
                     b.Property<string>("ProviderDisplayName")
                         .HasColumnType("text");
@@ -208,12 +206,10 @@ namespace TrippingPortal.WebApp.Migrations
                         .HasColumnType("text");
 
                     b.Property<string>("LoginProvider")
-                        .HasColumnType("character varying(128)")
-                        .HasMaxLength(128);
+                        .HasColumnType("text");
 
                     b.Property<string>("Name")
-                        .HasColumnType("character varying(128)")
-                        .HasMaxLength(128);
+                        .HasColumnType("text");
 
                     b.Property<string>("Value")
                         .HasColumnType("text");
@@ -223,9 +219,9 @@ namespace TrippingPortal.WebApp.Migrations
                     b.ToTable("AspNetUserTokens");
                 });
 
-            modelBuilder.Entity("TrippingPortal.Core.Event", b =>
+            modelBuilder.Entity("TrippingPortal.Core.Entities.Event", b =>
                 {
-                    b.Property<int>("EventId")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("integer")
                         .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
@@ -258,16 +254,16 @@ namespace TrippingPortal.WebApp.Migrations
                     b.Property<DateTime>("UtilityFinalReportUploadTime")
                         .HasColumnType("timestamp without time zone");
 
-                    b.HasKey("EventId");
+                    b.HasKey("Id");
 
                     b.HasIndex("EventClassificationId");
 
                     b.ToTable("Events");
                 });
 
-            modelBuilder.Entity("TrippingPortal.Core.EventClassification", b =>
+            modelBuilder.Entity("TrippingPortal.Core.Entities.EventClassification", b =>
                 {
-                    b.Property<int>("EventClassificationId")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("integer")
                         .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
@@ -276,7 +272,7 @@ namespace TrippingPortal.WebApp.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.HasKey("EventClassificationId");
+                    b.HasKey("Id");
 
                     b.HasIndex("Name")
                         .IsUnique();
@@ -284,9 +280,9 @@ namespace TrippingPortal.WebApp.Migrations
                     b.ToTable("EventClassifications");
                 });
 
-            modelBuilder.Entity("TrippingPortal.Core.EventEL", b =>
+            modelBuilder.Entity("TrippingPortal.Core.Entities.EventEL", b =>
                 {
-                    b.Property<int>("EventELId")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("integer")
                         .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
@@ -294,7 +290,7 @@ namespace TrippingPortal.WebApp.Migrations
                     b.Property<DateTime>("CreatedAt")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("timestamp without time zone")
-                        .HasDefaultValue(new DateTime(2019, 11, 5, 15, 7, 14, 280, DateTimeKind.Local).AddTicks(2067));
+                        .HasDefaultValue(new DateTime(2019, 11, 16, 23, 48, 1, 474, DateTimeKind.Local).AddTicks(2887));
 
                     b.Property<int>("EventId")
                         .HasColumnType("integer");
@@ -305,7 +301,7 @@ namespace TrippingPortal.WebApp.Migrations
                     b.Property<DateTime>("UpdatedAt")
                         .ValueGeneratedOnAddOrUpdate()
                         .HasColumnType("timestamp without time zone")
-                        .HasDefaultValue(new DateTime(2019, 11, 5, 15, 7, 14, 282, DateTimeKind.Local).AddTicks(3567));
+                        .HasDefaultValue(new DateTime(2019, 11, 16, 23, 48, 1, 477, DateTimeKind.Local).AddTicks(6774));
 
                     b.Property<string>("UploadUtilityId")
                         .HasColumnType("text");
@@ -313,7 +309,7 @@ namespace TrippingPortal.WebApp.Migrations
                     b.Property<string>("UploadedById")
                         .HasColumnType("text");
 
-                    b.HasKey("EventELId");
+                    b.HasKey("Id");
 
                     b.HasIndex("EventId");
 
@@ -324,9 +320,9 @@ namespace TrippingPortal.WebApp.Migrations
                     b.ToTable("EventELs");
                 });
 
-            modelBuilder.Entity("TrippingPortal.Core.Owner", b =>
+            modelBuilder.Entity("TrippingPortal.Core.Entities.Owner", b =>
                 {
-                    b.Property<int>("OwnerId")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("integer")
                         .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
@@ -341,7 +337,7 @@ namespace TrippingPortal.WebApp.Migrations
                     b.Property<int?>("TrippingId1")
                         .HasColumnType("integer");
 
-                    b.HasKey("OwnerId");
+                    b.HasKey("Id");
 
                     b.HasIndex("Name")
                         .IsUnique();
@@ -353,9 +349,9 @@ namespace TrippingPortal.WebApp.Migrations
                     b.ToTable("Owners");
                 });
 
-            modelBuilder.Entity("TrippingPortal.Core.Tripping", b =>
+            modelBuilder.Entity("TrippingPortal.Core.Entities.Tripping", b =>
                 {
-                    b.Property<int>("TrippingId")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("integer")
                         .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
@@ -391,14 +387,14 @@ namespace TrippingPortal.WebApp.Migrations
                     b.Property<DateTime>("RevivalTime")
                         .HasColumnType("timestamp without time zone");
 
-                    b.HasKey("TrippingId");
+                    b.HasKey("Id");
 
                     b.HasIndex("EventId");
 
                     b.ToTable("Trippings");
                 });
 
-            modelBuilder.Entity("TrippingPortal.Core.TrippingBayOwner", b =>
+            modelBuilder.Entity("TrippingPortal.Core.Entities.TrippingBayOwner", b =>
                 {
                     b.Property<int>("TrippingId")
                         .HasColumnType("integer");
@@ -406,7 +402,7 @@ namespace TrippingPortal.WebApp.Migrations
                     b.Property<int>("OwnerId")
                         .HasColumnType("integer");
 
-                    b.Property<int>("TrippingBayOwnerId")
+                    b.Property<int>("Id")
                         .HasColumnType("integer");
 
                     b.HasKey("TrippingId", "OwnerId");
@@ -416,9 +412,9 @@ namespace TrippingPortal.WebApp.Migrations
                     b.ToTable("TrippingBayOwners");
                 });
 
-            modelBuilder.Entity("TrippingPortal.Core.TrippingDR", b =>
+            modelBuilder.Entity("TrippingPortal.Core.Entities.TrippingDR", b =>
                 {
-                    b.Property<int>("TrippingDRId")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("integer")
                         .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
@@ -426,7 +422,7 @@ namespace TrippingPortal.WebApp.Migrations
                     b.Property<DateTime>("CreatedAt")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("timestamp without time zone")
-                        .HasDefaultValue(new DateTime(2019, 11, 5, 15, 7, 14, 283, DateTimeKind.Local).AddTicks(7001));
+                        .HasDefaultValue(new DateTime(2019, 11, 16, 23, 48, 1, 482, DateTimeKind.Local).AddTicks(7443));
 
                     b.Property<DateTime>("FileUploadTime")
                         .HasColumnType("timestamp without time zone");
@@ -443,12 +439,12 @@ namespace TrippingPortal.WebApp.Migrations
                     b.Property<DateTime>("UpdatedAt")
                         .ValueGeneratedOnAddOrUpdate()
                         .HasColumnType("timestamp without time zone")
-                        .HasDefaultValue(new DateTime(2019, 11, 5, 15, 7, 14, 283, DateTimeKind.Local).AddTicks(7196));
+                        .HasDefaultValue(new DateTime(2019, 11, 16, 23, 48, 1, 482, DateTimeKind.Local).AddTicks(7717));
 
                     b.Property<string>("UploadUtilityId")
                         .HasColumnType("text");
 
-                    b.HasKey("TrippingDRId");
+                    b.HasKey("Id");
 
                     b.HasIndex("TrippingId");
 
@@ -457,9 +453,9 @@ namespace TrippingPortal.WebApp.Migrations
                     b.ToTable("TrippingDRs");
                 });
 
-            modelBuilder.Entity("TrippingPortal.Core.TrippingEL", b =>
+            modelBuilder.Entity("TrippingPortal.Core.Entities.TrippingEL", b =>
                 {
-                    b.Property<int>("TrippingELId")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("integer")
                         .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
@@ -467,7 +463,7 @@ namespace TrippingPortal.WebApp.Migrations
                     b.Property<DateTime>("CreatedAt")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("timestamp without time zone")
-                        .HasDefaultValue(new DateTime(2019, 11, 5, 15, 7, 14, 283, DateTimeKind.Local).AddTicks(5905));
+                        .HasDefaultValue(new DateTime(2019, 11, 16, 23, 48, 1, 483, DateTimeKind.Local).AddTicks(4003));
 
                     b.Property<DateTime>("FileUploadTime")
                         .HasColumnType("timestamp without time zone");
@@ -481,12 +477,12 @@ namespace TrippingPortal.WebApp.Migrations
                     b.Property<DateTime>("UpdatedAt")
                         .ValueGeneratedOnAddOrUpdate()
                         .HasColumnType("timestamp without time zone")
-                        .HasDefaultValue(new DateTime(2019, 11, 5, 15, 7, 14, 283, DateTimeKind.Local).AddTicks(6124));
+                        .HasDefaultValue(new DateTime(2019, 11, 16, 23, 48, 1, 483, DateTimeKind.Local).AddTicks(4243));
 
                     b.Property<string>("UploadUtilityId")
                         .HasColumnType("text");
 
-                    b.HasKey("TrippingELId");
+                    b.HasKey("Id");
 
                     b.HasIndex("TrippingId");
 
@@ -495,7 +491,7 @@ namespace TrippingPortal.WebApp.Migrations
                     b.ToTable("TrippingELs");
                 });
 
-            modelBuilder.Entity("TrippingPortal.Core.TrippingElementOwner", b =>
+            modelBuilder.Entity("TrippingPortal.Core.Entities.TrippingElementOwner", b =>
                 {
                     b.Property<int>("TrippingId")
                         .HasColumnType("integer");
@@ -503,7 +499,7 @@ namespace TrippingPortal.WebApp.Migrations
                     b.Property<int>("OwnerId")
                         .HasColumnType("integer");
 
-                    b.Property<int>("TrippingElementOwnerId")
+                    b.Property<int>("Id")
                         .HasColumnType("integer");
 
                     b.HasKey("TrippingId", "OwnerId");
@@ -513,7 +509,7 @@ namespace TrippingPortal.WebApp.Migrations
                     b.ToTable("TrippingElementOwners");
                 });
 
-            modelBuilder.Entity("TrippingPortal.Core.UtilityOwner", b =>
+            modelBuilder.Entity("TrippingPortal.Core.Entities.UtilityOwner", b =>
                 {
                     b.Property<string>("UtilityId")
                         .HasColumnType("text");
@@ -521,7 +517,7 @@ namespace TrippingPortal.WebApp.Migrations
                     b.Property<int>("OwnerId")
                         .HasColumnType("integer");
 
-                    b.Property<int>("UtilityOwnerId")
+                    b.Property<int>("Id")
                         .HasColumnType("integer");
 
                     b.HasKey("UtilityId", "OwnerId");
@@ -531,7 +527,7 @@ namespace TrippingPortal.WebApp.Migrations
                     b.ToTable("UtilityOwners");
                 });
 
-            modelBuilder.Entity("TrippingPortal.Core.Utility", b =>
+            modelBuilder.Entity("TrippingPortal.Core.Entities.Utility", b =>
                 {
                     b.HasBaseType("Microsoft.AspNetCore.Identity.IdentityUser");
 
@@ -604,134 +600,134 @@ namespace TrippingPortal.WebApp.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("TrippingPortal.Core.Event", b =>
+            modelBuilder.Entity("TrippingPortal.Core.Entities.Event", b =>
                 {
-                    b.HasOne("TrippingPortal.Core.EventClassification", "EventClassification")
+                    b.HasOne("TrippingPortal.Core.Entities.EventClassification", "EventClassification")
                         .WithMany()
                         .HasForeignKey("EventClassificationId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("TrippingPortal.Core.EventEL", b =>
+            modelBuilder.Entity("TrippingPortal.Core.Entities.EventEL", b =>
                 {
-                    b.HasOne("TrippingPortal.Core.Event", "Event")
+                    b.HasOne("TrippingPortal.Core.Entities.Event", "Event")
                         .WithMany()
                         .HasForeignKey("EventId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("TrippingPortal.Core.Utility", "UploadUtility")
+                    b.HasOne("TrippingPortal.Core.Entities.Utility", "UploadUtility")
                         .WithMany()
                         .HasForeignKey("UploadUtilityId");
 
-                    b.HasOne("TrippingPortal.Core.Utility", "UploadedBy")
+                    b.HasOne("TrippingPortal.Core.Entities.Utility", "UploadedBy")
                         .WithMany()
                         .HasForeignKey("UploadedById");
                 });
 
-            modelBuilder.Entity("TrippingPortal.Core.Owner", b =>
+            modelBuilder.Entity("TrippingPortal.Core.Entities.Owner", b =>
                 {
-                    b.HasOne("TrippingPortal.Core.Tripping", null)
+                    b.HasOne("TrippingPortal.Core.Entities.Tripping", null)
                         .WithMany("BayOwners")
                         .HasForeignKey("TrippingId");
 
-                    b.HasOne("TrippingPortal.Core.Tripping", null)
+                    b.HasOne("TrippingPortal.Core.Entities.Tripping", null)
                         .WithMany("ElementOwners")
                         .HasForeignKey("TrippingId1");
                 });
 
-            modelBuilder.Entity("TrippingPortal.Core.Tripping", b =>
+            modelBuilder.Entity("TrippingPortal.Core.Entities.Tripping", b =>
                 {
-                    b.HasOne("TrippingPortal.Core.Event", "Event")
+                    b.HasOne("TrippingPortal.Core.Entities.Event", "Event")
                         .WithMany()
                         .HasForeignKey("EventId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("TrippingPortal.Core.TrippingBayOwner", b =>
+            modelBuilder.Entity("TrippingPortal.Core.Entities.TrippingBayOwner", b =>
                 {
-                    b.HasOne("TrippingPortal.Core.Owner", "Owner")
+                    b.HasOne("TrippingPortal.Core.Entities.Owner", "Owner")
                         .WithMany()
                         .HasForeignKey("OwnerId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("TrippingPortal.Core.Tripping", "Tripping")
+                    b.HasOne("TrippingPortal.Core.Entities.Tripping", "Tripping")
                         .WithMany()
                         .HasForeignKey("TrippingId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("TrippingPortal.Core.TrippingDR", b =>
+            modelBuilder.Entity("TrippingPortal.Core.Entities.TrippingDR", b =>
                 {
-                    b.HasOne("TrippingPortal.Core.Tripping", "Tripping")
+                    b.HasOne("TrippingPortal.Core.Entities.Tripping", "Tripping")
                         .WithMany()
                         .HasForeignKey("TrippingId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("TrippingPortal.Core.Utility", "UploadUtility")
+                    b.HasOne("TrippingPortal.Core.Entities.Utility", "UploadUtility")
                         .WithMany()
                         .HasForeignKey("UploadUtilityId");
                 });
 
-            modelBuilder.Entity("TrippingPortal.Core.TrippingEL", b =>
+            modelBuilder.Entity("TrippingPortal.Core.Entities.TrippingEL", b =>
                 {
-                    b.HasOne("TrippingPortal.Core.Tripping", "Tripping")
+                    b.HasOne("TrippingPortal.Core.Entities.Tripping", "Tripping")
                         .WithMany()
                         .HasForeignKey("TrippingId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("TrippingPortal.Core.Utility", "UploadUtility")
+                    b.HasOne("TrippingPortal.Core.Entities.Utility", "UploadUtility")
                         .WithMany()
                         .HasForeignKey("UploadUtilityId");
                 });
 
-            modelBuilder.Entity("TrippingPortal.Core.TrippingElementOwner", b =>
+            modelBuilder.Entity("TrippingPortal.Core.Entities.TrippingElementOwner", b =>
                 {
-                    b.HasOne("TrippingPortal.Core.Owner", "Owner")
+                    b.HasOne("TrippingPortal.Core.Entities.Owner", "Owner")
                         .WithMany()
                         .HasForeignKey("OwnerId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("TrippingPortal.Core.Tripping", "Tripping")
+                    b.HasOne("TrippingPortal.Core.Entities.Tripping", "Tripping")
                         .WithMany()
                         .HasForeignKey("TrippingId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("TrippingPortal.Core.UtilityOwner", b =>
+            modelBuilder.Entity("TrippingPortal.Core.Entities.UtilityOwner", b =>
                 {
-                    b.HasOne("TrippingPortal.Core.Owner", "Owner")
+                    b.HasOne("TrippingPortal.Core.Entities.Owner", "Owner")
                         .WithMany()
                         .HasForeignKey("OwnerId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("TrippingPortal.Core.Utility", "Utility")
+                    b.HasOne("TrippingPortal.Core.Entities.Utility", "Utility")
                         .WithMany()
                         .HasForeignKey("UtilityId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("TrippingPortal.Core.Utility", b =>
+            modelBuilder.Entity("TrippingPortal.Core.Entities.Utility", b =>
                 {
-                    b.HasOne("TrippingPortal.Core.Event", null)
+                    b.HasOne("TrippingPortal.Core.Entities.Event", null)
                         .WithMany("ReportUploadUtilities")
                         .HasForeignKey("EventId");
 
-                    b.HasOne("TrippingPortal.Core.Tripping", null)
+                    b.HasOne("TrippingPortal.Core.Entities.Tripping", null)
                         .WithMany("OtherEndReportUploadUtilities")
                         .HasForeignKey("TrippingId");
 
-                    b.HasOne("TrippingPortal.Core.Tripping", null)
+                    b.HasOne("TrippingPortal.Core.Entities.Tripping", null)
                         .WithMany("ReportUploadUtilities")
                         .HasForeignKey("TrippingId1");
                 });

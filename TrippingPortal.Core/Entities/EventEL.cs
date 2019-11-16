@@ -1,16 +1,15 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
+using TrippingPortal.Core.Interfaces;
 
-namespace TrippingPortal.Core
+namespace TrippingPortal.Core.Entities
 {
     /**
      * An Event log (EL) file for an event
      * A single event can have multiple event logs
      * **/
-    public class EventEL
+    public class EventEL : BaseEntity, IAggregateRoot
     {
-        public int EventELId { get; set; }
-
         public Event Event { get; set; }
         public int EventId { get; set; }
 

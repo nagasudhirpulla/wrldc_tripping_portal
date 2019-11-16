@@ -1,14 +1,14 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using TrippingPortal.Core.Interfaces;
 
-namespace TrippingPortal.Core
+namespace TrippingPortal.Core.Entities
 {
     /**
      * Each event will have a single classification
      * Name is unique
      * **/
-    public class EventClassification
+    public class EventClassification : BaseEntity, IAggregateRoot
     {
-        public int EventClassificationId { get; set; }
         [Required]
         public string Name { get; set; }
     }

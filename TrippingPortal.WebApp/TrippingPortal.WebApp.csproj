@@ -5,6 +5,13 @@
     <UserSecretsId>aspnet-TrippingPortal.WebApp-7F2C9FCE-45D3-4263-ABCD-2320D8435077</UserSecretsId>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Compile Remove="Data\**" />
+    <Content Remove="Data\**" />
+    <EmbeddedResource Remove="Data\**" />
+    <None Remove="Data\**" />
+  </ItemGroup>
+
 
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="3.0.0" />
@@ -12,18 +19,16 @@
     <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="3.0.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.0.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="3.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="3.0.0" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.0.0" />
     <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="3.0.1" />
   </ItemGroup>
 
 
   <ItemGroup>
+    <ProjectReference Include="..\TrippingPortal.Application\TrippingPortal.Application.csproj" />
     <ProjectReference Include="..\TrippingPortal.Core\TrippingPortal.Core.csproj" />
     <ProjectReference Include="..\TrippingPortal.Data\TrippingPortal.Data.csproj" />
-  </ItemGroup>
-
-
-  <ItemGroup>
-    <Folder Include="Data\" />
   </ItemGroup>
 
 </Project>
